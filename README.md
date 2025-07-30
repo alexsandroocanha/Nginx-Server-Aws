@@ -42,9 +42,8 @@ Por padrão, o servidor está configurado para iniciar na Por padrão, o servido
 
 **Chave SSH**
 Você precisará configurar o caminho e o nome da sua chave SSH pública.
-<img width="636" height="141" alt="image" src="https://github.com/user-attachments/assets/a7a6f685-a28e-47b9-8b26-3aa925b45eb1" />
-
 Por padrão, ela está localizada na pasta ./ssh, dentro do diretório home do Linux. Essa chave pública será enviada para a instância EC2, permitindo a autenticação via SSH e o acesso remoto à máquina.
+<img width="636" height="141" alt="image" src="https://github.com/user-attachments/assets/a7a6f685-a28e-47b9-8b26-3aa925b45eb1" />
 
 **Email de Notificação**
 Não se esqueça de configurar o e-mail para receber as notificações do CloudWatch.
