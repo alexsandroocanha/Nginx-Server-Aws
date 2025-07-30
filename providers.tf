@@ -8,8 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  profile = "Alexsandro"
-  region  = "us-east-1"
+  profile = "..."
+  region  = "..."
   default_tags {
     tags = {
       Managed = "terraform"

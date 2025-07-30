@@ -5,11 +5,11 @@ variable "availability_zone" {
 }
 
 variable "chave_pub_aws" {
-  default     = "~/.ssh/aws-key.pub"
+  default     = "~/.ssh/..."
   description = "Chave publica privada Alex"
 }
 
 variable "email_usuario" {
-  default = "alexsandroocanha@gmail.com"
+  default = "email@user.com"
   description = "Email de notificação do Cloud Watch"
 }

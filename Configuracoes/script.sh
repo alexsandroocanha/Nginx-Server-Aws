@@ -2,7 +2,7 @@
 
 SITE_URL="http://localhost"
 LOG_FILE="/var/log/monitoramento.log"
-WEBHOOK_URL="https://discord.com/api/webhooks/1399105955647590460/I8zeUsedU1Nh4GSYng2frVUZSmBYVpGxW6QtGFOBDDy-zrU6hDt9VkQWVSpl_NTT-40v"
+WEBHOOK_URL="..."
 
 log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
