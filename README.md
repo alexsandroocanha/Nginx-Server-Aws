@@ -1,5 +1,4 @@
-<img width="606" height="141" alt="image" src="https://github.com/user-attachments/assets/5655e846-5e51-4d2a-994c-47a8d1b700a1" /># Servidor Web-Nginx
-
+# Servidor Web-Nginx
 Este projeto provisiona automaticamente uma infraestrutura completa na AWS usando **Terraform**, configurando um servidor web estático com **Nginx**, monitoramento via script **CloudWatch** e alertas por e-mail/Discord.
 
 # Visão Geral
