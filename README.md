@@ -9,8 +9,8 @@ Este projeto provisiona automaticamente uma infraestrutura completa na AWS usand
 - Deploy simples e direto na AWS
 
 ## Tecnologias Utilizadas
-- **AWS (EC2, VPC, Subnets, Security Groups, CloudWatch, SNS)**
-- **Terraform**
+- **AWS (EC2, VPC, Subnets, Security Groups, CloudWatch, SNS, Gateway)**
+- **Terraform (user_data)**
 - **Shell Script**
 - **Nginx**
 
@@ -90,11 +90,22 @@ Após as alterações, você só ira precisar do **Terraform**.
 Caso ja tenha, você só precisa rodar estes comandos
 
 terraform init
+
 terraform plan
+
 terraform apply --auto-approve
 
 Caso queira derrubar o sistema, você precisara rodar apennas este comando
 terraform destroy --auto-approve
+
+### Vereficando Logs
+Para verificar os Logs, você primeiro tem que entrar via ssh. Para fins de facilitar este passo, logo quando a instancia sobe pelo terraform, ela retorna o IP Publico da Instancia EC2
+
+ssh ubuntu@0.0.0.0 # O ip"0.0.0.0" subistitua pelo ip que retorna após subir a instancia pelo terraform
+
+Para verificar o logs de Monitoramento, se o servidor caiu e em qual momento caiu, você executa o comando
+
+cat /var/log/monitoramento.log
 
 # Monitoramento
 O script user_data.sh instala um serviço que:
