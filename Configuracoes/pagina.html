@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #1a1a1a;
+            background-color: #c8c8e0;
+            overflow: hidden; /* Evita barras de rolagem */
+        }
+
+        .video-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            z-index: -2; /* Coloca o vídeo atrás de todo o conteúdo */
+            pointer-events: none; /* Permite clicar através do vídeo */
+        }
+        
+        #youtube-player {
+            width: 100%;
+            height: 100%;
+            /* Ajuste para cobrir a tela inteira, pode precisar de ajuste fino */
+            transform: scale(1.5);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(200, 200, 224, 0.75); /* Roxo-azulado claro com menos opacidade */
+            z-index: -1; /* Fica entre o vídeo e o conteúdo */
+        }
+
+        .content-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem; /* Tamanho grande para o título principal */
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            margin-bottom: 30px;
+        }
+
+        .company-name {
+            margin-top: 30px;
+            font-size: 1rem;
+        }
+
+        .resume-button {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 2px solid #1a1a1a;
+            background-color: transparent;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease; /* Efeito suave de transição */
+        }
+
+        .resume-button:hover {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-background">
+        <div id="youtube-player"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="content-container">
+        <h1>Hello World</h1>
+        <p class="subtitle">Criado por Alexsandro</p>
+        <a href="https://www.linkedin.com/in/alexsandro-ocanha-rodrigues-77149a35b/" target="_blank" class="resume-button">Mais informação</a>
+        <p class="company-name">Trabalho Compasss</p>
+    </div>
+
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                videoId: 'SWQwPXtxIXg',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'SWQwPXtxIXg',
+                    'showinfo': 0,       
+                    'modestbranding': 1, 
+                    'fs': 0,           
+                    'rel': 0            
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.mute(); 
+            event.target.playVideo(); 
+        }
+    </script>
+
+</body>
+</html>
