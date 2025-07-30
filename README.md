@@ -2,7 +2,7 @@
 
 Este projeto provisiona automaticamente uma infraestrutura completa na AWS usando **Terraform**, configurando um servidor web estático com **Nginx**, monitoramento via script **CloudWatch** e alertas por e-mail/Discord.
 
-## Visão Geral
+# Visão Geral
 - Infraestrutura como código com **Terraform**
 - Configuração automática do Nginx via **User Data** com **Bash Script**
 - Rede segmentada com **subnets públicas e privadas**
@@ -23,14 +23,14 @@ Este projeto provisiona automaticamente uma infraestrutura completa na AWS usand
 - **Security Groups** controlando o tráfego HTTP (porta 80) e SSH (porta 22)
 - Alarmes configurados com **CloudWatch** + **SNS** para notificações
 
-## Modificações Terraform
+# Modificações Terraform
 Para utilizar este projeto, você terá que configurar alguns parâmetros:
 
-**Usuario**
+### **Usuario**
 Na pagina profile, você tera que inserir o nome do seu Profile definido para realizar uma conexão sso:
 <img width="606" height="141" alt="image" src="https://github.com/user-attachments/assets/b5562008-015d-4dc7-8c9f-5396ecc880c5" />
 
-**Região**
+### **Região**
 Por padrão, o servidor está configurado para iniciar na Por padrão, o servidor está configurado para iniciar na região "us-east-1". Caso deseje utilizar outra região, será necessário modificar os seguintes pontos:
 
 - A região no bloco provider
@@ -40,7 +40,7 @@ Por padrão, o servidor está configurado para iniciar na Por padrão, o servido
 <img width="650" height="120" alt="image" src="https://github.com/user-attachments/assets/6031b175-4cd5-4fcb-9283-a51113bd0433" />
 
 
-**Chave SSH**
+### **Chave SSH**
 Você precisará configurar o caminho e o nome da sua chave SSH pública.
 Por padrão, ela está localizada na pasta ./ssh, dentro do diretório home do Linux. Essa chave pública será enviada para a instância EC2, permitindo a autenticação via SSH e o acesso remoto à máquina.
 <img width="636" height="141" alt="image" src="https://github.com/user-attachments/assets/a7a6f685-a28e-47b9-8b26-3aa925b45eb1" />
@@ -53,10 +53,10 @@ No arquivo de variáveis, substitua o valor "email@user.com" pelo e-mail do usu�
 ⚠️ Importante
 Você precisará confirmar o recebimento (opt-in) através de um e-mail enviado pela AWS após a criação da infraestrutura.
 
-## Modificações Arquivo-Bash
+# Modificações Arquivo-Bash
 Além das configurações em Terraform, também é necessário alterar alguns parâmetros nos scripts Bash:
 
-**Configuração de WebHook**
+### **Configuração de WebHook**
 O servidor foi integrado a um script que envia uma mensagem de erro sempre que ele detecta que o **serviço caiu**.
 Além disso, uma mensagem com a data e hora da queda é armazenada em **log**.
 
@@ -70,7 +70,7 @@ Essa linha está localizada dentro do arquivo script.sh, dentro da pasta configu
 O script já está disponível em um **repositório público no GitHub.**
 Para que funcione corretamente, você deve alterar o **link raw.githubusercontent.com** dentro do arquivo s**etup-nginx.sh** (na pasta Scripts/) e apontar para o seu fork ou uma cópia própria, se desejar editar.
 
-**Configuração Pagina HTML**
+### **Configuração Pagina HTML**
 Para exibir sua própria página **HTML** no servidor Nginx, altere o link raw usado no script de instalação.
 No arquivo setup-nginx.sh, localizado dentro do diretório Scripts, substitua o link atual por um link raw válido para a página HTML de sua escolha, como por exemplo:
 <img width="1028" height="85" alt="image" src="https://github.com/user-attachments/assets/1c542a5c-bf76-47bc-80b6-712dd8f90cd0" />
@@ -86,11 +86,30 @@ Você precisa alterar o link raw no arquivo** setup-nginx.sh** (dentro da pasta 
 - Alerta enviado corretamente (e-mail e Discord)
 - Instância provisionada via Terraform com User Data funcional
 
-## Informações para Contato
+# Como usar
+Após as alterações, você só ira precisar do **Terraform**.
+Caso ja tenha, você só precisa rodar estes comandos
 
+terraform init
+terraform plan
+terraform apply --auto-approve
 
+Caso queira derrubar o sistema, você precisara rodar apennas este comando
+terraform destroy --auto-approve
 
-## Informações para Contato
+# Monitoramento
+O script user_data.sh instala um serviço que:
+- Verifica se o Nginx está online (via curl)
+- Gera logs em /var/log/monitoramento.log
+- Envia alertas por e-mail ou webhook (ex: Discord)
+- Esse script é executado a cada minuto usando cron ou systemd timer (dependendo da distro).
+
+## Recursos Recomendados
+- [Documentação do Terraform](https://developer.hashicorp.com/terraform/docs)
+- [Documentação oficial do Nginx](https://nginx.org/en/docs/)
+- [CloudWatch Alarms – AWS](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)
+
+# Informações para Contato
 Caso tenha dúvidas, sinta-se à vontade para entrar em contato:
 
 Entre em contato:
