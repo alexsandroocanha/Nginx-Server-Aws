@@ -38,7 +38,7 @@ chown -R www-data:www-data /var/www/meusite.com
 mkdir -p /etc/systemd/system/nginx.service.d
 
 # Configurando a pagina HTML
-wget -O /var/www/meusite.com/index.html https://raw.githubusercontent.com/alexsandroocanha/html/refs/heads/main/pagina.html
+wget -O /var/www/meusite.com/index.html https://raw.githubusercontent.com/alexsandroocanha/Trabalho-Compass-01/refs/heads/main/Configuracoes/pagina.html
 
 # Configurando o Servidor Linux reiniciar o Nginx caso ele caia
 cat <<EOF > /etc/systemd/system/nginx.service.d/override.conf
@@ -55,7 +55,7 @@ systemctl restart nginx
 mkdir -p /opt/scripts
 touch /var/log/monitoramento.log && chown ubuntu:ubuntu /var/log/monitoramento.log
 
-wget -O /opt/scripts/monitor.sh https://raw.githubusercontent.com/alexsandroocanha/html/refs/heads/main/script.sh
+wget -O /opt/scripts/monitor.sh https://raw.githubusercontent.com/alexsandroocanha/Trabalho-Compass-01/refs/heads/main/Configuracoes/script.sh
 
 chmod +x /opt/scripts/monitor.sh
 
@@ -72,6 +72,6 @@ cd /tmp
 wget https://s3.us-east-1.amazonaws.com/amazoncloudwatch-agent-us-east-1/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 
-wget -O /opt/aws/amazon-cloudwatch-agent/etc/config.json https://raw.githubusercontent.com/alexsandroocanha/json/refs/heads/main/config.json
+wget -O /opt/aws/amazon-cloudwatch-agent/etc/config.json https://raw.githubusercontent.com/alexsandroocanha/Trabalho-Compass-01/refs/heads/main/Configuracoes/config.json
 
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/etc/config.json -s
