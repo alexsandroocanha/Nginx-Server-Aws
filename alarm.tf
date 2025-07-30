@@ -6,7 +6,7 @@ resource "aws_sns_topic_subscription" "email_subscription" {
   topic_arn = aws_sns_topic.alarms_topic.arn
   protocol  = "email"
   
-  endpoint  = "alexsandroocanha@gmail.com"
+  endpoint  = var.email_usuario
 }
 
 resource "aws_cloudwatch_metric_alarm" "instance_status_alarm" {
