@@ -12,8 +12,8 @@ provider "aws" {
   region  = "..."
   default_tags {
     tags = {
-      Managed = "terraform"
-      owner   = "Alexsandro"
+      Managed = ..."
+      owner   = "..."
     }
   }
 }
