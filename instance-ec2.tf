@@ -19,9 +19,9 @@ resource "aws_instance" "webservice" {
   user_data = file("${path.module}/Scripts/setup-nginx.sh")
 
   tags = {
-    Name       = "PB - JUL 2025"
-    CostCenter = "CO92000024"
-    Project    = "PB - JUL 2025"    
+    Name       = "..."
+    CostCenter = "..."
+    Project    = ..."    
   }
 
   volume_tags = {
