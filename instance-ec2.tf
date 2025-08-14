@@ -25,9 +25,9 @@ resource "aws_instance" "webservice" {
   }
 
   volume_tags = {
-    Name       = "PB - JUL 2025"
-    CostCenter = "CO92000024"
-    Project    = "PB - JUL 2025"
+    Name       = "..."
+    CostCenter = "..."
+    Project    = "..."
   }
 }
 
